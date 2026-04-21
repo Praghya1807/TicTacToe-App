@@ -1,28 +1,42 @@
 public class TicTacToe {
 
-    static char[][] board = new char[3][3];
+    // Board initialization
+    static char[][] board = {
+            {'-', '-', '-'},
+            {'-', '-', '-'},
+            {'-', '-', '-'}
+    };
 
+    // Entry point
     public static void main(String[] args) {
-        initializeBoard();
-        printBoard();
+
+        int slot = 7;  // sample slot
+
+        int row = getRowFromSlot(slot);
+        int col = getColFromSlot(slot);
+
+        // UC6: Place move
+        placeMove(row, col, 'X');
+
+        // Print result
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + row);
+        System.out.println("Column: " + col);
+        System.out.println("Value at position: " + board[row][col]);
     }
 
-    static void initializeBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = '-';
-            }
-        }
+    // Convert slot → row
+    static int getRowFromSlot(int slot) {
+        return (slot - 1) / 3;
     }
 
-    static void printBoard() {
-        System.out.println("Current Board:");
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println();
-        }
+    // Convert slot → column
+    static int getColFromSlot(int slot) {
+        return (slot - 1) % 3;
     }
-}
+
+    // UC6 method
+    static void placeMove(int row, int col, char symbol) {
+        board[row][col] = symbol;
+    }
+}git add .
